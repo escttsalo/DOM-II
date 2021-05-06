@@ -26,14 +26,27 @@ let scale = 1;
 const introImg = document.querySelector('.intro img');
 introImg.addEventListener('wheel', zoom);
 
-  //Nav links pop (on load)
-  
-// debugger;
+//Loads new navigation
 window.addEventListener("load", pop)
 function pop(e){
   let mainNav = document.querySelector(".main-navigation")
   mainNav.style.backgroundColor = "black";
   mainNav.style.opacity = "0.75"
   document.querySelectorAll("nav a").forEach(item => item.style.color = "white")
-  
 };
+
+//prevent links from refreshing
+document.querySelector("nav a").addEventListener('click', (e) => preventDefault())
+
+//DARK MODE plz
+document.querySelector("body").addEventListener('dblclick', (e) => {
+  e.target.style.backgroundColor = "black";
+  let comFun = item => item.style.color = "white";
+  document.querySelectorAll("h2").forEach(comFun);
+  document.querySelectorAll("h4").forEach(comFun);
+  document.querySelectorAll("p").forEach((item, i, obj) => {
+    if(i < obj.length - 1){
+      item.style.color = "white";
+    }
+  });
+});
